@@ -1,19 +1,18 @@
-Voting System (Hardhat 기반)
+🗳️ VotingSystemSeasonal - 스마트컨트랙트 기반 시즌별 투표 시스템
 
-이 프로젝트는 Solidity와 Hardhat을 기반으로 한 시즌제 투표 시스템입니다.  
-총 3개의 시즌이 존재하며, 시즌마다 고유한 후보자와 투표자를 관리합니다.  
-또한 Hardhat 로컬 네트워크에서 총 3000개의 랜덤 투표를 시뮬레이션합니다.
+이 프로젝트는 Hardhat을 이용한 Solidity 스마트 컨트랙트 프로젝트입니다.
+시즌별 후보 등록, 유권자별 최대 10표 투표, 기권 처리 등을 시뮬레이션할 수 있습니다.
 
- ✅ 주요 기능
+✅ 설치 방법
 
-1. 스마트 컨트랙트
-- 시즌별 후보자 등록
-- 시즌별 유권자 투표 (1인당 시즌당 10표)
-- 모든 유권자의 투표 수 확인
-- 특정 시즌 또는 전체 시즌의 총 투표 수 확인
+로컬에 클론 이후 npm insatll
+하드헷 노드 실행 npx hardhat node 
 
-2. 이벤트 및 구조체 활용
-- `Voter` 구조체에 `mapping(uint => uint)`으로 투표 내역 저장
-- `Candidate` 구조체로 후보자별 ID, 이름, 득표 수 관리
-- 이벤트 로그: 후보 등록, 투표 완료
+새 터미널 창을 실행하고 
+npx hardhat run scripts/deploy.js --network localhost
 
+컨트렉트가 배포한 상황이 되면 
+npx hardhat run scripts/simulateVotes.js --network localhost
+
+ 시즌 1~3에 대한 후보 등록, 유권자별 랜덤 투표, 기권 처리가 자동 수행됩니다.
+ 결과는 콘솔에 출력되며, 실패 로그는 vote_failures_seasonX.log 파일을 생성하면서 저장됩니다
